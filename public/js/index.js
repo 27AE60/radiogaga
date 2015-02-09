@@ -1,3 +1,11 @@
+'use strict';
+
 document.addEventListener("DOMContentLoaded", function(event) {
-  console.log('console log and all');
+  var client = new Faye.Client('/faye',{
+    timeout: 20
+  });
+
+  client.subscribe('/channel', function(message) {
+    document.getElementById('current-song').innerHTML = message.song;
+  });
 });

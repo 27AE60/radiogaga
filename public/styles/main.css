@@ -30,3 +30,10 @@ img.bg {
 audio {
   display: none;
 }
+
+#current-song {
+  position: relative;
+  text-align: center;
+  padding: 2em;
+  color: #EC6D7D;
+}
