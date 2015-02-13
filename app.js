@@ -31,7 +31,7 @@ bayeux.attach(server);
 
 /* routes */
 app.get('/', function(req, res) {
-  res.render('index.html');
+  res.render('index.jade');
 });
 
 app.get('/:channel', function(req, res) {
@@ -53,7 +53,7 @@ app.get('/:channel', function(req, res) {
   res.render('../src/' + _render, _channel);
 });
 
-var _pollCurrentSong =  new PollCurrentSong();
+var _pollCurrentSong = new PollCurrentSong();
 _pollCurrentSong.addEventListener(function(data) {
   bayeux.getClient().publish('/channel', data);
 });

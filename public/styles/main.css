@@ -37,3 +37,16 @@ audio {
   padding: 2em;
   color: #EC6D7D;
 }
+
+@font-face {
+  font-family:"VTKS ROCK GARAGE BAND";
+  src: url("../VTKS ROCK GARAGE BAND.ttf") /* TTF file for CSS3 browsers */
+}
+
+.radio__text--title {
+  font-family:'VTKS ROCK GARAGE BAND', sans-serif;
+  font-size: 100px;
+  font-weight:normal;
+  text-align: center;
+  color: #D02F2F;
+}
