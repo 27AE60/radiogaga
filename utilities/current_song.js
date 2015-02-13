@@ -6,7 +6,7 @@ var EventEmitter = require("events").EventEmitter;
 var _event = new EventEmitter();
 
 // URL to a known Icecast stream
-var url = 'http://admin:hackme@localhost:8000/admin/stats';
+var url = 'http://admin:hackme@192.168.0.103:8000/admin/stats';
 
 var currentSong = null;
 
@@ -16,7 +16,7 @@ var PollCurrentSong = function() {
     request(url, function (error, response, body) {
       if (!error && response.statusCode == 200) {
         var response = JSON.parse(parser.toJson(response.body));
-
+        //console.log('multiple channel response', response);
         if (currentSong !==  response["icestats"]["source"]["title"]) {
           currentSong = response["icestats"]["source"]["title"];
           /* emit event to all listeners */

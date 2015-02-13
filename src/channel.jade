@@ -1,0 +1,18 @@
+html
+  head
+    meta(name="HandheldFriendly" content="true")
+    meta(name="viewport", content="width=device-width,minimum-scale=1,initial-scale=1.0,maximum-scale=1.0,user-scalable=yes")
+    link(rel='stylesheet', href='styles/main.css')
+
+  body
+    img(src="img/#{imgSrc}" class="bg")
+    audio(autoplay="autoplay" controls)
+      source(src="#{station}" type="audio/mpeg")
+      em Sorry, your browser doesn't support HTML5 audio
+    h1#current-song Bandeh
+
+    script(type="text/javascript" src="js/vendor/faye-browser.js")
+    script(type="text/javascript").
+      window.onload = function() {
+        console.log('running up');
+      }

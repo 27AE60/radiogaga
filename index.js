@@ -1,39 +1,19 @@
 'use strict';
 
-var express  = require('express'),
-  http = require('http'),
-  bodyParser = require ('body-parser'),
-  morgan     = require ('morgan'),
-  faye       = require('faye');
+var app = require('./app'),
+  cfg = require('./radiogaga.json'),
+  version = require('./package.json').version,
+  program = require('commander');
 
-var PollCurrentSong = require('./current_song.js');
-/**/
-var app = express();
+/* cli */
+program
+  .version(version)
+  .option('-p, --port <n>', 'port number', parseInt)
+  .parse(process.argv);
 
-/* default configurations */
-app.use(morgan());
-app.use(bodyParser());
-app.use(express.static(__dirname + '/public'));
-app.engine('html', require('ejs').renderFile);
+var port = program.port ? program.port : cfg.api.port;
 
-var bayeux = new faye.NodeAdapter({
-  mount:    '/faye',
-  timeout:  45
+/* server running */
+var server = app.listen(port, function()  {
+  console.log('Listening on %d', port);
 });
-
-var server = http.createServer(app);
-bayeux.attach(server);
-
-/* routes */
-app.get('/', function(req, res) {
-  res.render('index.html');
-});
-
-var _pollCurrentSong =  new PollCurrentSong();
-_pollCurrentSong.addEventListener(function(data) {
-  bayeux.getClient().publish('/channel', data);
-});
-
-var port = process.env.port || 3000;
-server.listen(port);
-console.log('Server up and listening on port ' + port);

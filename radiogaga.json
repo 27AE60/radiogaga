@@ -1,0 +1,28 @@
+{
+  "name": "radiogaga",
+  "version": "0.0.0",
+  "description": "RadioGaga, You ASS!",
+  "api" : {
+    "station" : "http://192.168.0.103:8000",
+    "server" : "http://192.168.0.103:3000",
+    "port" : 3000
+  },
+  "channels": [
+    {
+      "channel": "indie",
+      "mount": "/indie",
+      "path": "",
+      "img" : "whitney.png"
+    }, {
+      "channel": "eng",
+      "mount": "/eng",
+      "path": "",
+      "img" : "churchill.png"
+    }, {
+      "channel": "loop",
+      "mount": "/loop",
+      "path": "",
+      "img" : "melinda.png"
+    }
+  ]
+}
