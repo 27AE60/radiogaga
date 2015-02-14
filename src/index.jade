@@ -6,6 +6,22 @@ html
 
   body
     h1.radio__text--title Radio Gaga
+    div.channels--wrapper
+      ul.channels
+        li.channels__item
+          a(href="http://localhost:3000/indie")
+            img.channels__img(src="img/whitney.png")
+            h3.channel__text--name Whitney
+
+        li.channels__item
+          a(href="http://localhost:3000/eng")
+            img.channels__img(src="img/churchill.png")
+            h3.channel__text--name Churchill
+
+        li.channels__item
+          a(href="http://localhost:3000/melinda")
+            img.channels__img(src="img/melinda.png")
+            h3.channel__text--name Melinda
 
     script(type="text/javascript" src="js/vendor/faye-browser.js")
     script(type="text/javascript").
